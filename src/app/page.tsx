@@ -1,9 +1,18 @@
+"use client";
 type SquareType = {
   value: string;
 };
 
 function Square({ value }: SquareType) {
-  return <button className="square">{value}</button>;
+  function handleClick() {
+    console.log("clicked!");
+  }
+
+  return (
+    <button className="square" onClick={handleClick}>
+      {value}
+    </button>
+  );
 }
 
 export default function Board() {
