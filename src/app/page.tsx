@@ -16,11 +16,6 @@ function Square({ value, onSquareClick }: SquareType) {
 }
 
 function Board() {
-  const [xIsNext, setXIsNext] = useState(true);
-  const [squares, setSquares] = useState<(string | null)[]>(
-    Array(9).fill(null)
-  );
-
   function handleClick(i: number) {
     if (squares[i] || calculateWinner(squares)) {
       return;
