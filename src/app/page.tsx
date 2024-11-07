@@ -73,6 +73,8 @@ export default function Game() {
   ]);
   const currentSquares = history[history.length - 1];
 
+  console.log(history);
+
   function handlePlay(nextSquares: (string | null)[]) {
     setHistory([...history, nextSquares]);
     setXIsNext(!xIsNext);
