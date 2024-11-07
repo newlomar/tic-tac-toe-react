@@ -15,7 +15,7 @@ function Square({ value, onSquareClick }: SquareType) {
   );
 }
 
-export default function Board() {
+function Board() {
   const [xIsNext, setXIsNext] = useState(true);
   const [squares, setSquares] = useState<(string | null)[]>(
     Array(9).fill(null)
