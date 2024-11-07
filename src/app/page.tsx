@@ -7,6 +7,12 @@ type SquareType = {
   onSquareClick: () => void;
 };
 
+type BoardType = {
+  xIsNext: boolean;
+  squares: (string | null)[];
+  onPlay: (nextSquares: (string | null)[]) => void;
+};
+
 function Square({ value, onSquareClick }: SquareType) {
   return (
     <button className="square" onClick={onSquareClick}>
@@ -15,7 +21,7 @@ function Square({ value, onSquareClick }: SquareType) {
   );
 }
 
-function Board({ xIsNext, squares, onPlay }) {
+function Board({ xIsNext, squares, onPlay }: BoardType) {
   function handleClick(i: number) {
     if (squares[i] || calculateWinner(squares)) {
       return;
