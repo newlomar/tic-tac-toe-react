@@ -84,12 +84,15 @@ export default function Game() {
 
   function jumpTo(nextMove: number) {
     setCurrentMove(nextMove);
+    setHistory([...history.slice(0, currentMove)]);
   }
 
   const moves = history.map((squares, move) => {
     let description;
     if (move === 0) {
       description = "Go to game start";
+    } else if (move === history.length - 1) {
+      description = "You are at move #" + move;
     } else {
       description = "Go to move #" + move;
     }
