@@ -81,7 +81,7 @@ export default function Game() {
     setXIsNext(!xIsNext);
   }
 
-  function jumpTo(nextMove) {
+  function jumpTo(nextMove: number) {
     setCurrentMove(nextMove);
     setXIsNext(nextMove % 2 === 0);
   }
