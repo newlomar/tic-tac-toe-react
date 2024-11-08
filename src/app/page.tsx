@@ -72,7 +72,7 @@ export default function Game() {
     Array(9).fill(null),
   ]);
   const [currentMove, setCurrentMove] = useState(0);
-  const currentSquares = history[history.length - 1];
+  const currentSquares = history[currentMove];
 
   console.log(history);
 
