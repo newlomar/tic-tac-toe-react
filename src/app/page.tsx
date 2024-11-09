@@ -47,7 +47,7 @@ function Board({ xIsNext, squares, onPlay }: BoardType) {
   return (
     <>
       <div className="status">{status}</div>
-      <div className="board-row">
+      {/* <div className="board-row">
         <Square value={squares[0]} onSquareClick={() => handleClick(0)} />
         <Square value={squares[1]} onSquareClick={() => handleClick(1)} />
         <Square value={squares[2]} onSquareClick={() => handleClick(2)} />
@@ -61,7 +61,7 @@ function Board({ xIsNext, squares, onPlay }: BoardType) {
         <Square value={squares[6]} onSquareClick={() => handleClick(6)} />
         <Square value={squares[7]} onSquareClick={() => handleClick(7)} />
         <Square value={squares[8]} onSquareClick={() => handleClick(8)} />
-      </div>
+      </div> */}
     </>
   );
 }
