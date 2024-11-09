@@ -91,7 +91,7 @@ export default function Game() {
     const isCurrentMove = move === history.length - 1;
     if (move === 0) {
       description = "Go to game start";
-    } else if (move === isCurrentMove) {
+    } else if (isCurrentMove) {
       description = "You are at move #" + move;
     } else {
       description = "Go to move #" + move;
