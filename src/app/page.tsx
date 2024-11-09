@@ -99,14 +99,14 @@ export default function Game() {
     return (
       <li key={move}>
         {isCurrentMove ? (
-          <button className="historyButton" onClick={() => jumpTo(move)}>
-            {description}
-          </button>
-        ) : (
           <button
             className="historyButton historyButtonCurrentMove"
             onClick={() => jumpTo(move)}
           >
+            {description}
+          </button>
+        ) : (
+          <button className="historyButton" onClick={() => jumpTo(move)}>
             {description}
           </button>
         )}
