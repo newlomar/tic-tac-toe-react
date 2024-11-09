@@ -110,3 +110,8 @@ ul {
   background: #111184;
   color: #fff;
 }
+
+.reverseHistoryOrder {
+  border: 1px solid gray;
+  padding: 5px;
+}
