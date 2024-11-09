@@ -90,6 +90,7 @@ export default function Game() {
   const [currentMove, setCurrentMove] = useState(0);
   const xIsNext = currentMove % 2 === 0;
   const currentSquares = history[currentMove];
+  const [moveHistoryOrderAsc, setMoveHistoryOrderAsc] = useState(true);
 
   function handlePlay(nextSquares: (string | null)[]) {
     const nextHistory = [...history.slice(0, currentMove + 1), nextSquares];
@@ -135,7 +136,17 @@ export default function Game() {
         <Board xIsNext={xIsNext} squares={currentSquares} onPlay={handlePlay} />
       </div>
       <div className="game-info">
-        <ol>{moves}</ol>
+        <ol>{moveHistoryOrderAsc ? moves : moves.reverse()}</ol>
+        <button
+          className="reverseHistoryOrder"
+          onClick={() =>
+            setMoveHistoryOrderAsc((prevState) => {
+              return !prevState;
+            })
+          }
+        >
+          Reverse History Order
+        </button>
       </div>
     </div>
   );
