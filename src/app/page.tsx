@@ -97,7 +97,9 @@ export default function Game() {
     }
     return (
       <li key={move}>
-        <button onClick={() => jumpTo(move)}>{description}</button>
+        <button className="historyButton" onClick={() => jumpTo(move)}>
+          {description}
+        </button>
       </li>
     );
   });
