@@ -43,7 +43,7 @@ function Board({ xIsNext, squares, onPlay }: BoardType) {
   } else {
     status = "Next player: " + (xIsNext ? "X" : "O");
   }
-
+  const boardRows = [0, 1, 2];
   return (
     <>
       <div className="status">{status}</div>
@@ -62,6 +62,22 @@ function Board({ xIsNext, squares, onPlay }: BoardType) {
         <Square value={squares[7]} onSquareClick={() => handleClick(7)} />
         <Square value={squares[8]} onSquareClick={() => handleClick(8)} />
       </div> */}
+      {boardRows.map((value, index) => {
+        const columns = [3 * index, 3 * index + 1, 3 * index + 2];
+        return (
+          <div className="board-row" key={columns[index]}>
+            {columns.map((value, i) => {
+              return (
+                <Square
+                  value={squares[columns[i]]}
+                  onSquareClick={() => handleClick(columns[i])}
+                  key={i}
+                />
+              );
+            })}
+          </div>
+        );
+      })}
     </>
   );
 }
