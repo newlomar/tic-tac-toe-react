@@ -103,5 +103,10 @@ ul {
   width: 80%;
   padding: 5px;
   border: 1px solid gray;
-  border-color: red;
+  border-color: #999;
+}
+
+.historyButtonCurrentMove {
+  background: #111184;
+  color: #fff;
 }
