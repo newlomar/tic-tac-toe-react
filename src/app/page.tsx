@@ -17,7 +17,6 @@ type BoardType = {
 };
 
 function Square({ value, onSquareClick, winnerArray, position }: SquareType) {
-  console.log(position, winnerArray);
   return winnerArray.includes(position) ? (
     <button className="square winnerSquare" onClick={onSquareClick}>
       {value}
