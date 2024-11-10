@@ -17,6 +17,7 @@ type BoardType = {
 };
 
 function Square({ value, onSquareClick, winnerArray, position }: SquareType) {
+  console.log(position, winnerArray);
   return winnerArray.find((item) => item === position) ? (
     <button className="square winnerSquare" onClick={onSquareClick}>
       {value}
@@ -70,14 +71,14 @@ function Board({ xIsNext, squares, onPlay, winner }: BoardType) {
         <Square value={squares[8]} onSquareClick={() => handleClick(8)} />
       </div> */}
       {boardRows.map((value, index) => {
-        const columns = [3 * index, 3 * index + 1, 3 * index + 2];
+        const positions = [3 * index, 3 * index + 1, 3 * index + 2];
         return (
-          <div className="board-row" key={columns[index]}>
-            {columns.map((value, i) => {
+          <div className="board-row" key={positions[index]}>
+            {positions.map((value, i) => {
               return (
                 <Square
-                  value={squares[columns[i]]}
-                  onSquareClick={() => handleClick(columns[i])}
+                  value={squares[positions[i]]}
+                  onSquareClick={() => handleClick(positions[i])}
                   key={i}
                   winnerArray={winner ? winner[1] : []}
                   position={i}
