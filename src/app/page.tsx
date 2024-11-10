@@ -22,8 +22,10 @@ function Square({ value, onSquareClick }: SquareType) {
 }
 
 function Board({ xIsNext, squares, onPlay }: BoardType) {
+  const winner = calculateWinner(squares);
+
   function handleClick(i: number) {
-    if (squares[i] || calculateWinner(squares)) {
+    if (squares[i] || winner !== null) {
       return;
     }
     const nextSquares = squares.slice();
@@ -36,7 +38,6 @@ function Board({ xIsNext, squares, onPlay }: BoardType) {
     onPlay(nextSquares);
   }
 
-  const winner = calculateWinner(squares);
   let status: string;
   if (winner) {
     status = "Winner: " + winner;
