@@ -18,7 +18,7 @@ type BoardType = {
 
 function Square({ value, onSquareClick, winnerArray, position }: SquareType) {
   console.log(position, winnerArray);
-  return winnerArray.find((item) => item === position) ? (
+  return winnerArray.includes(position) ? (
     <button className="square winnerSquare" onClick={onSquareClick}>
       {value}
     </button>
@@ -81,7 +81,7 @@ function Board({ xIsNext, squares, onPlay, winner }: BoardType) {
                   onSquareClick={() => handleClick(positions[i])}
                   key={i}
                   winnerArray={winner ? winner[1] : []}
-                  position={i}
+                  position={positions[i]}
                 />
               );
             })}
