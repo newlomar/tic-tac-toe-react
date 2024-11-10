@@ -5,25 +5,30 @@ import { useState } from "react";
 type SquareType = {
   value: string | null;
   onSquareClick: () => void;
+  winnerArray: number[];
+  position: number;
 };
 
 type BoardType = {
   xIsNext: boolean;
   squares: (string | null)[];
   onPlay: (nextSquares: (string | null)[]) => void;
+  winner: [string, number[]] | null;
 };
 
-function Square({ value, onSquareClick }: SquareType) {
-  return (
+function Square({ value, onSquareClick, winnerArray, position }: SquareType) {
+  return winnerArray.find((item) => item === position) ? (
+    <button className="square winnerSquare" onClick={onSquareClick}>
+      {value}
+    </button>
+  ) : (
     <button className="square" onClick={onSquareClick}>
       {value}
     </button>
   );
 }
 
-function Board({ xIsNext, squares, onPlay }: BoardType) {
-  const winner = calculateWinner(squares);
-
+function Board({ xIsNext, squares, onPlay, winner }: BoardType) {
   function handleClick(i: number) {
     if (squares[i] || winner !== null) {
       return;
@@ -39,8 +44,8 @@ function Board({ xIsNext, squares, onPlay }: BoardType) {
   }
 
   let status: string;
-  if (winner) {
-    status = "Winner: " + winner;
+  if (winner !== null) {
+    status = "Winner: " + winner[0];
   } else {
     status = "Next player: " + (xIsNext ? "X" : "O");
   }
@@ -74,6 +79,8 @@ function Board({ xIsNext, squares, onPlay }: BoardType) {
                   value={squares[columns[i]]}
                   onSquareClick={() => handleClick(columns[i])}
                   key={i}
+                  winnerArray={winner ? winner[1] : []}
+                  position={i}
                 />
               );
             })}
@@ -92,6 +99,7 @@ export default function Game() {
   const xIsNext = currentMove % 2 === 0;
   const currentSquares = history[currentMove];
   const [moveHistoryOrderAsc, setMoveHistoryOrderAsc] = useState(true);
+  const winner = calculateWinner(currentSquares);
 
   function handlePlay(nextSquares: (string | null)[]) {
     const nextHistory = [...history.slice(0, currentMove + 1), nextSquares];
@@ -134,7 +142,12 @@ export default function Game() {
   return (
     <div className="game">
       <div className="game-board">
-        <Board xIsNext={xIsNext} squares={currentSquares} onPlay={handlePlay} />
+        <Board
+          xIsNext={xIsNext}
+          squares={currentSquares}
+          onPlay={handlePlay}
+          winner={winner}
+        />
       </div>
       <div className="game-info">
         <ol>{moveHistoryOrderAsc ? moves : moves.reverse()}</ol>
