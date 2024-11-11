@@ -99,30 +99,33 @@ export default function Game() {
     let description;
     const isCurrentMove = move === history.length - 1;
     const squaresPositionObject = {
-      "0": "1, 1",
-      "1": "1, 2",
-      "2": "1, 3",
-      "3": "2, 1",
-      "4": "2, 2",
-      "5": "2, 3",
-      "6": "3, 1",
-      "7": "3, 2",
-      "8": "3, 3",
+      0: "1, 1",
+      1: "1, 2",
+      2: "1, 3",
+      3: "2, 1",
+      4: "2, 2",
+      5: "2, 3",
+      6: "3, 1",
+      7: "3, 2",
+      8: "3, 3",
+      null: "",
     };
 
     const newMovePosition =
       move === 0
         ? null
-        : history[history.length - 1].filter(
-            (move) => !history[history.length - 2].includes(move)
+        : history[move].findIndex(
+            (item, index) => history[move][index] !== history[move - 1][index]
           );
-    console.log(newMovePosition);
+    console.log(squaresPositionObject[0]);
     if (move === 0) {
       description = "Go to game start";
     } else if (isCurrentMove) {
-      description = "You are at move #" + move; //+ `(${})`;
+      description = "You are at move #" + move;
+      //+`(${squaresPositionObject[String(newMovePosition)]})`;
     } else {
-      description = "Go to move #" + move; //+ `(${})`;
+      description = "Go to move #" + move;
+      //+`(${squaresPositionObject[String(newMovePosition)]})`;
     }
     return (
       <li key={move}>
