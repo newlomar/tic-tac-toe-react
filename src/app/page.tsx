@@ -98,12 +98,25 @@ export default function Game() {
   const moves = history.map((squares, move) => {
     let description;
     const isCurrentMove = move === history.length - 1;
+    const squaresPositionObject = {
+      "0": "1, 1",
+      "1": "1, 2",
+      "2": "1, 3",
+      "3": "2, 1",
+      "4": "2, 2",
+      "5": "2, 3",
+      "6": "3, 1",
+      "7": "3, 2",
+      "8": "3, 3",
+    }
+    const currentMoveRow = 
+    const currentMoveColumn = 
     if (move === 0) {
       description = "Go to game start";
     } else if (isCurrentMove) {
-      description = "You are at move #" + move;
+      description = "You are at move #" + move + `(${})`;
     } else {
-      description = "Go to move #" + move;
+      description = "Go to move #" + move + `(${})`;
     }
     return (
       <li key={move}>
