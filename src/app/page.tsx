@@ -16,6 +16,10 @@ type BoardType = {
   winner: [string, number[]] | null;
 };
 
+type squaresPositionObjectType = {
+  [key: number]: string;
+};
+
 function Square({ value, onSquareClick, winnerArray, position }: SquareType) {
   return winnerArray.includes(position) ? (
     <button className="square winnerSquare" onClick={onSquareClick}>
@@ -98,7 +102,7 @@ export default function Game() {
   const moves = history.map((squares, move) => {
     let description;
     const isCurrentMove = move === history.length - 1;
-    const squaresPositionObject = {
+    const squaresPositionObject: squaresPositionObjectType = {
       0: "1, 1",
       1: "1, 2",
       2: "1, 3",
@@ -116,15 +120,16 @@ export default function Game() {
         : history[move].findIndex(
             (item, index) => history[move][index] !== history[move - 1][index]
           );
-    console.log(squaresPositionObject[0]);
+    const moveCRL =
+      newMovePosition !== null
+        ? squaresPositionObject[newMovePosition]
+        : "null";
     if (move === 0) {
       description = "Go to game start";
     } else if (isCurrentMove) {
-      description = "You are at move #" + move;
-      //+`(${squaresPositionObject[String(newMovePosition)]})`;
+      description = "You are at move #" + move + ` (${moveCRL})`;
     } else {
-      description = "Go to move #" + move;
-      //+`(${squaresPositionObject[String(newMovePosition)]})`;
+      description = "Go to move #" + move + ` (${moveCRL})`;
     }
     return (
       <li key={move}>
