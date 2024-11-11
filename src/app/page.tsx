@@ -109,8 +109,6 @@ export default function Game() {
       "7": "3, 2",
       "8": "3, 3",
     }
-    const currentMoveRow = 
-    const currentMoveColumn = 
     if (move === 0) {
       description = "Go to game start";
     } else if (isCurrentMove) {
