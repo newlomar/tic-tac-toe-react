@@ -108,7 +108,6 @@ export default function Game() {
       6: "3, 1",
       7: "3, 2",
       8: "3, 3",
-      null: "",
     };
 
     const newMovePosition =
