@@ -108,13 +108,21 @@ export default function Game() {
       "6": "3, 1",
       "7": "3, 2",
       "8": "3, 3",
-    }
+    };
+
+    const newMovePosition =
+      move === 0
+        ? null
+        : history[history.length - 1].filter(
+            (move) => !history[history.length - 2].includes(move)
+          );
+    console.log(newMovePosition);
     if (move === 0) {
       description = "Go to game start";
     } else if (isCurrentMove) {
-      description = "You are at move #" + move + `(${})`;
+      description = "You are at move #" + move; //+ `(${})`;
     } else {
-      description = "Go to move #" + move + `(${})`;
+      description = "Go to move #" + move; //+ `(${})`;
     }
     return (
       <li key={move}>
