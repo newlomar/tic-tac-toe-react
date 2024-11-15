@@ -127,7 +127,12 @@ export default function Game() {
     if (move === 0) {
       description = "Go to game start";
     } else if (isCurrentMove) {
-      description = "You are at move #" + move + ` (${moveCRL})`;
+      description = (
+        <div>
+          <div>You are at move #{move}</div>
+          <div>({moveCRL})</div>
+        </div>
+      );
     } else {
       description = "Go to move #" + move + ` (${moveCRL})`;
     }
