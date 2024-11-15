@@ -134,7 +134,12 @@ export default function Game() {
         </div>
       );
     } else {
-      description = "Go to move #" + move + ` (${moveCRL})`;
+      description = (
+        <div>
+          <div>Go to move #{move}</div>
+          <div>({moveCRL})</div>
+        </div>
+      );
     }
     return (
       <li key={move}>
